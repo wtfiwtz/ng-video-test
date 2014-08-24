@@ -13,7 +13,6 @@ app.controller('root', function ($scope, $sce) {
 	$scope.thumb = "img/test.jpg";
 	$scope.sources = {
 		youtube: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-
 /*		mp4: {
 			SD: "http://download.blender.org/peach/bigbuckbunny_movies/big_buck_bunny_480p_stereo.avi", 
 			HD: "http://download.blender.org/peach/bigbuckbunny_movies/big_buck_bunny_720p_stereo.avi"
@@ -52,10 +51,21 @@ app.controller('root', function ($scope, $sce) {
 			}
 		},
 		sources: [
-//			{src: "http://download.blender.org/peach/bigbuckbunny_movies/BigBuckBunny_320x180.mp4", type: "video/mp4"},
 			{src: $scope.ytUrl, type: "video/youtube"}
 		]
 	};
+});
+
+// Videogular
+app.directive('vg', function($window){
+  return {
+   restrict: 'A',
+   link: function(scope,element,attrs) {
+	    scope.$on('onVgPlay', function(e) { 
+	    	//element.toggleFullScreen();
+	    });
+	}	
+  }
 });
 
 // Video.js

@@ -1,20 +1,19 @@
 {
   "name": "videogular",
-  "version": "0.4.2",
   "main": "./videogular.js",
   "dependencies": {
     "angular": "~1.2.0",
     "angular-sanitize": "~1.2.0"
   },
   "homepage": "https://github.com/2fdevs/bower-videogular",
-  "_release": "0.4.2",
+  "_release": "8446d7612e",
   "_resolution": {
-    "type": "version",
-    "tag": "v0.4.2",
-    "commit": "b88c75eace8abf7b281bf331cef8f6609b33d025"
+    "type": "branch",
+    "branch": "master",
+    "commit": "8446d7612e788a52e6cb8b9129af73ba95873806"
   },
   "_source": "git://github.com/2fdevs/bower-videogular.git",
-  "_target": "~0.4.2",
+  "_target": "master",
   "_originalSource": "videogular",
   "_direct": true
 }
