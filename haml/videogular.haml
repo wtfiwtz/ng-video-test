@@ -1,5 +1,7 @@
 <videogular vg-width="config.width" vg-height="config.height" vg-theme="config.theme.url" vg-responsive="config.responsive" vg-stretch="config.stretch" vg-autoplay="config.autoPlay">
-<video vg-src="config.sources" preload="metadata"></video>
+<video class="videoPlayer" preload="metadata">
+<source type="video/youtube" ng-src="{{ytUrl}}" />
+</video>
 
 <vg-youtube></vg-youtube>
 

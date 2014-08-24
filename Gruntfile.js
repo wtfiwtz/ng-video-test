@@ -16,29 +16,9 @@ module.exports = function(grunt) {
           extDot: 'last'
         }]     
       }
-    },
-    ngtemplates: {
-      app: {
-        src: "html/*.html",
-        dest: "js/templates.js",
-        options: {
-          prefix: "/",
-          module: "app",
-          htmlmin: {
-            collapseBooleanAttributes:      true,
-            collapseWhitespace:             true,
-            removeAttributeQuotes:          true,
-            removeEmptyAttributes:          true,
-            removeRedundantAttributes:      true,
-            removeScriptTypeAttributes:     true,
-            removeStyleLinkTypeAttributes:  true
-          }
-        }
-      }
     }
   });
   grunt.loadNpmTasks('grunt-contrib-haml');
-  grunt.loadNpmTasks('grunt-angular-templates');
-  grunt.registerTask('default', ['ngtemplates']);
+  grunt.registerTask('default', ['haml']);
 };
 

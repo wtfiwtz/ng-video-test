@@ -25,11 +25,16 @@
   videojs.Youtube = videojs.MediaTechController.extend({
     /** @constructor */
     init: function(player, options, ready) {
-      videojs.MediaTechController.call(this, player, options, ready);
-
       // No event is triggering this for YouTube
       this.features['progressEvents'] = false;
       this.features['timeupdateEvents'] = false;
+
+      videojs.MediaTechController.call(this, player, options, ready);
+
+      this.isIos = /(iPad|iPhone|iPod)/g.test( navigator.userAgent );
+      this.isAndroid = /(Android)/g.test( navigator.userAgent );
+      //used to prevent play events on IOS7 and Android > 4.2 until the user has clicked the player
+      this.playVideoIsAllowed = !(this.isIos || this.isAndroid);
 
       // Copy the JavaScript options if they exists
       if(typeof options['source'] !== 'undefined') {
@@ -39,8 +44,6 @@
           }
         }
       }
-
-      this.onWaiting = this.onWaiting.bind(this);
 
       this.userQuality = videojs.Youtube.convertQualityName(player.options()['quality']);
 
@@ -134,7 +137,7 @@
         }
 
         if(!this.player_.options()['ytcontrols']) {
-          this.player_.off(this.onWaiting);
+          this.player_.off('waiting', this.bindedWaiting);
         }
 
         // Remove the poster
@@ -146,7 +149,9 @@
         }
 
         // Get rid of the created DOM elements
-        this.qualityButton.parentNode.removeChild(this.qualityButton);
+        if (this.qualityButton.parentNode) {
+          this.qualityButton.parentNode.removeChild(this.qualityButton);
+        }
 
         if(typeof this.player_.loadingSpinner !== 'undefined') {
           this.player_.loadingSpinner.hide();
@@ -223,7 +228,11 @@
         }, 100);
       }
 
-      this.player_.on('waiting', this.onWaiting);
+      this.bindedWaiting = function() {
+        self.onWaiting();
+      };
+
+      this.player_.on('waiting', this.bindedWaiting);
 
       if(videojs.Youtube.apiReady) {
         this.loadYoutube();
@@ -343,7 +352,7 @@
       delete this.defaultQuality;
 
       if(this.videoId !== null) {
-        if(this.player_.options()['autoplay']) {
+        if(this.player_.options()['autoplay'] && this.playVideoIsAllowed) {
           this.ytplayer.loadVideoById({
             videoId: this.videoId,
             suggestedQuality: this.userQuality
@@ -371,7 +380,6 @@
 
   videojs.Youtube.prototype.play = function() {
     if(this.videoId !== null) {
-      this.updateQualities();
 
       // Make sure to not display the spinner for mobile
       if(!this.player_.options()['ytcontrols']) {
@@ -389,7 +397,9 @@
           this.ytplayer.mute();
         }
 
-        this.ytplayer.playVideo();
+        if(this.playVideoIsAllowed) {
+          this.ytplayer.playVideo();
+        }
       } else {
         this.playOnReady = true;
       }
@@ -544,6 +554,13 @@
 
     this.player_.trigger('loadedmetadata');
 
+    // The duration is loaded so we might as well fire off the timeupdate and duration events
+    // this allows for the duration of the video (timeremaining) to be displayed if styled
+    // to show the control bar initially. This gives the user the ability to see how long the video 
+    // is before clicking play
+    this.player_.trigger('durationchange');
+    this.player_.trigger('timeupdate');
+
     // Let the player take care of itself as soon as the YouTube is ready
     // The loading spinner while waiting for the tech would be impossible otherwise
     if(typeof this.player_.loadingSpinner !== 'undefined') {
@@ -562,10 +579,6 @@
   };
 
   videojs.Youtube.prototype.updateQualities = function() {
-
-    if(typeof this.ytplayer === 'undefined' || typeof this.ytplayer.getAvailableQualityLevels === 'undefined') {
-      return;
-    }
 
     function setupEventListener(el) {
       addEventListener(el, 'click', function() {
@@ -636,8 +649,8 @@
           break;
 
         case YT.PlayerState.PLAYING:
-          this.play();
-
+          this.playVideoIsAllowed = true;
+          this.updateQualities();
           this.player_.trigger('timeupdate');
           this.player_.trigger('durationchange');
           this.player_.trigger('playing');
@@ -645,7 +658,6 @@
           break;
 
         case YT.PlayerState.PAUSED:
-          this.pause();
           this.player_.trigger('pause');
           break;
 

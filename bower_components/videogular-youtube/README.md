@@ -12,11 +12,13 @@ Install [Videogular](http://www.videogular.com/) `youtube` plugin with Bower:
 Inside the folder `bower_components\videogular-youtube` you should find also `html` partials that you should locate in `.\views\videogular\plugins\youtube\`.
 
 ## How to use
-Add directives:
+Add directives, and video source to your HTML:
 
 ```html
 <videogular vg-width="config.width" vg-height="config.height" vg-theme="config.theme.url" vg-autoplay="config.autoPlay" vg-stretch="config.stretch.value" vg-responsive="config.responsive">
-	<video vg-src="config.sources" preload='metadata'></video>
+	<video class='videoPlayer' preload='metadata'>
+		<source type="video/youtube" src="http://www.youtube.com/watch?v=nOEw9iiopwI" />
+	</video>
 
 	<vg-youtube></vg-youtube>
 
@@ -42,19 +44,6 @@ Add directives:
 </videogular>
 ```
 
-Add video source, like this
-
-```js
-$scope.config = {
-			...
-			sources: [
-				{src: $sce.trustAsResourceUrl("https://www.youtube.com/watch?v=DgzBz3ibnBA"), type: "video/youtube"},
-			],
-			...
-		}
-```
-
-
 Additionally, you will need to add youtube plugins and videogular to your application:
 
 ```js
@@ -64,7 +53,7 @@ angular.module("videogularApp",
         "controllers",
 
         "com.2fdevs.videogular",
-        "com.2fdevs.videogular.plugins.controlbar",
+        "com.2fdevs.videogular.plugins.controls",
         "com.2fdevs.videogular.plugins.overlayplay",
         "com.2fdevs.videogular.plugins.buffering",
         "info.vietnamcode.nampnq.videogular.plugins.youtube"
@@ -104,9 +93,9 @@ It's available on [Videogular's project Wiki](https://github.com/2fdevs/videogul
 
 The MIT License (MIT)
 
-Copyright (c) 2014 NamPNQ
+Copyright (c) 2013 NamPNQ
 
-Permission is hereby granted, free of charge, to any personamPNQamPNQ obtaining a copy of
+Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in
 the Software without restriction, including without limitation the rights to
 use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of

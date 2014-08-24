@@ -15,15 +15,15 @@
     "videogular-overlay-play": "latest"
   },
   "license": "MIT",
-  "homepage": "http://nampnq.vietnamcode.info",
-  "_release": "076e760218",
+  "homepage": "http://nampnq.vietnamcode.com",
+  "_release": "fc444744ff",
   "_resolution": {
     "type": "branch",
-    "branch": "stagging",
-    "commit": "076e76021868358140461a5ae1f4b130f6722ff8"
+    "branch": "master",
+    "commit": "fc444744ff3b0b8d05499ee5c5c98407308f595b"
   },
   "_source": "git://github.com/NamPNQ/bower-videogular-youtube.git",
-  "_target": "stagging",
+  "_target": "master",
   "_originalSource": "videogular-youtube",
   "_direct": true
 }
