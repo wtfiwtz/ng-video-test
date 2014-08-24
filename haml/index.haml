@@ -1,0 +1,33 @@
+!!!
+
+%html.no-js(xmlns:ng="http://angularjs.org" id="ng-app" ng-app="app")
+	%head
+		%meta(charset="utf-8")/
+		%meta(content="width=device-width, initial-scale=1.0" name="viewport")/
+		%title
+		%link(href="css/video-js.css" rel="stylesheet")/
+		%link(href="bower_components/videojs-resolutions/video-js-resolutions.css" rel="stylesheet")/
+		%link(href="css/videogular.css" rel="stylesheet")
+
+	%body(ng-controller="root")
+		
+		%h1 Video test
+		%div(ng-include="'html/video-player.html'")
+		
+		%script(src="bower_components/angular/angular.min.js")
+		%script(src="bower_components/angular-sanitize/angular-sanitize.min.js")
+
+		-#%script(src="bower_components/videojs/dist/video-js/video.dev.js")
+		-#%script(type="text/javascript")
+		-#	videojs.options.flash.swf = "bower_components/videojs/dist/video-js/video-js.swf";			
+		-#%script(src="bower_components/videojs-youtube/dist/vjs.youtube.js")
+		-#%script(src="bower_components/videojs-resolutions/video-js-resolutions.js")
+
+		%script(src="bower_components/videogular/videogular.min.js")
+		%script(src="bower_components/videogular-controls/controls.min.js")
+		%script(src="bower_components/videogular-buffering/buffering.min.js")
+		%script(src="bower_components/videogular-youtube/youtube.js")
+		%script(src="bower_components/videogular-overlay-play/overlay-play.min.js")
+		%script(src="bower_components/videogular-poster/poster.min.js")
+
+		%script(src="js/app.js")

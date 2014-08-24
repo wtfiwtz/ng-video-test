@@ -1,0 +1,14 @@
+{
+  "name": "videojs-resolutions",
+  "homepage": "https://github.com/vidcaster/video-js-resolutions",
+  "_release": "02d4c4599e",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "02d4c4599ea1a7c41efa70c7ce43beac93ea6545"
+  },
+  "_source": "git://github.com/vidcaster/video-js-resolutions.git",
+  "_target": "*",
+  "_originalSource": "videojs-resolutions",
+  "_direct": true
+}

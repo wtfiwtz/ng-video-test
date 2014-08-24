@@ -1,0 +1,29 @@
+{
+  "name": "bower-videogular-youtube",
+  "authors": [
+    "NamPNQ <nampnq@gmail.com>"
+  ],
+  "description": "Videogular youtube plugin",
+  "main": "youtube.js",
+  "keywords": [
+    "videogular",
+    "videogular-plugin",
+    "videogular-youtube"
+  ],
+  "dependencies": {
+    "videogular": "latest",
+    "videogular-overlay-play": "latest"
+  },
+  "license": "MIT",
+  "homepage": "http://nampnq.vietnamcode.info",
+  "_release": "076e760218",
+  "_resolution": {
+    "type": "branch",
+    "branch": "stagging",
+    "commit": "076e76021868358140461a5ae1f4b130f6722ff8"
+  },
+  "_source": "git://github.com/NamPNQ/bower-videogular-youtube.git",
+  "_target": "stagging",
+  "_originalSource": "videogular-youtube",
+  "_direct": true
+}

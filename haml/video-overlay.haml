@@ -1,0 +1,4 @@
+.pos.left.bottom.margin-large
+	-#%a(ui-sref='video({type:"video", slug:"{{video.title|slugify}}", nid:"{{video.nid}}"})') 
+	-#%h2.super-title(once-if="superTitle" once-class="super-title") {{superTitle|translate}}
+	%h3.title(once-text="video.title" once-class="size")

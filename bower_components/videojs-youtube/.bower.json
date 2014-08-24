@@ -1,0 +1,35 @@
+{
+  "name": "videojs-youtube",
+  "description": "YouTube playback technology for Video.js",
+  "version": "1.2.4",
+  "main": [
+    "dist/vjs.youtube.js"
+  ],
+  "ignore": [
+    "examples",
+    "sandbox",
+    "test",
+    ".editorconfig",
+    ".gitignore",
+    ".jshintrc",
+    ".travis.yml",
+    "bower.json",
+    "component.json",
+    "Gruntfile.js",
+    "package.json",
+    "README.md"
+  ],
+  "dependencies": {
+    "video.js": "4.6.4"
+  },
+  "homepage": "https://github.com/eXon/videojs-youtube",
+  "_release": "1.2.4",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.2.4",
+    "commit": "5382c16b4a8ec95813849dc6a3b2a4c92e0b4442"
+  },
+  "_source": "git://github.com/eXon/videojs-youtube.git",
+  "_target": "~1.2.2",
+  "_originalSource": "videojs-youtube"
+}
