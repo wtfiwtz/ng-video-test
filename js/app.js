@@ -11,8 +11,9 @@ var app = angular.module('app', [
 // Root controller
 app.controller('root', function ($scope, $sce) {
 	$scope.thumb = "img/test.jpg";
+	var query = encodeURIComponent(JSON.stringify({ html5:1 }));
 	$scope.sources = {
-		youtube: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+		youtube: "https://www.youtube.com/watch?v=dQw4w9WgXcQ&playerVars=" + query,
 /*		mp4: {
 			SD: "http://download.blender.org/peach/bigbuckbunny_movies/big_buck_bunny_480p_stereo.avi", 
 			HD: "http://download.blender.org/peach/bigbuckbunny_movies/big_buck_bunny_720p_stereo.avi"
@@ -27,8 +28,8 @@ app.controller('root', function ($scope, $sce) {
 
 	// Videogular config
 	$scope.config = {
-		width: "640",
-		height: "360",
+		width: "320",
+		height: "180",
 		autoHide: "true",
 		autoPlay: "true",
 		responsive: "false",
@@ -61,8 +62,12 @@ app.directive('vg', function($window){
   return {
    restrict: 'A',
    link: function(scope,element,attrs) {
-	    scope.$on('onVgPlay', function(e) { 
-	    	//element.toggleFullScreen();
+	   	scope.API = null;
+		scope.onPlayerReady = function(API) {
+			scope.API = API;
+		};
+	    scope.$on('onVgUpdateTime', function(e) { 
+	    	console.debug('update');
 	    });
 	}	
   }
@@ -73,11 +78,24 @@ app.directive('videoJs', function($timeout, $window){
   return {
    restrict: 'A',
    link: function(scope,element,attrs) {
-   		var setup = { techOrder:["youtube"], src:scope.sources.youtube };
-        var video = $window.videojs('video', setup).ready(function() {
-        	this.stop();
-        	this.play();
-	    });
+   		var setup = { techOrder:["youtube"], forceHTML5:true };
+   		attrs.id = "video" + "foo";
+   		element.attr('id', attrs.id);
+//   		element.attr('poster', "/img/test.jpg");
+   		element.append('<source type="video/youtube" src="' + scope.sources.youtube + '" />');
+	        var player = $window.videojs(attrs.id, setup).ready(function() {
+	        	var source = ([
+	        		{ type:"video/youtube", src:scope.sources.youtube }
+	 	  		]);
+	    		this.src(source);
+	//    		this.load();
+	//       	this.stop();
+	//        	this.play();
+		    });
+
+	    scope.$on('$destroy', function () {
+		    player.dispose();
+		});
         // Fix issue with not getting activated classes
         //var vidDiv = $('#' + id);
         //vidDiv.removeClass('vjs-paused').addClass('vjs-has-started vjs-playing');

@@ -1,0 +1,311 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"brand-",
+				"brand-info"
+			],
+			[
+				"dropdown",
+				"dropdown-menu"
+			],
+			[
+				"flat-",
+				"flat-orange-2"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 367.0,
+		"selected_items":
+		[
+			[
+				"pack",
+				"Package Control: Install Package"
+			],
+			[
+				"pac",
+				"Package Control: Install Package"
+			],
+			[
+				"haml",
+				"Set Syntax: PHP Haml"
+			],
+			[
+				"sass",
+				"Set Syntax: Sass"
+			],
+			[
+				"",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 530.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404' + 'e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/bryce/Desktop/Timmie's site",
+		"/Users/bryce/Desktop/Sets 8 Jun",
+		"/Users/bryce/Design/SS/Zencoder final3.tpl.json",
+		"/Users/bryce/Design/SS/Zencoder final.tpl.json",
+		"/Users/aegir/Sites/Aegir/ysp/sites/all/modules/custom/rules_zencoder/rules_zencoder.rules.inc",
+		"/Users/aegir/Sites/Aegir/ysp/sites/ysp.ld/themes/yspf5/crossdomainpolicy.xml",
+		"/Users/bryce/Design/SS/Zencoder-3.tpl.json",
+		"/Users/bryce/Design/SS/Zencoder-4.tpl.json",
+		"/Users/aegir/Sites/Aegir/adminysp/sites/ysp.ld/themes/yspf5/theme/view-link.tpl.phaml",
+		"/Users/aegir/Sites/Aegir/adminysp/sites/ysp.ld/themes/yspf5/theme/articles.tpl.phaml",
+		"/Users/aegir/Sites/Aegir/adminysp/sites/ysp.ld/themes/yspf5/theme/article-dropdown.tpl.phaml",
+		"/Users/aegir/Sites/Aegir/adminysp/sites/ysp.ld/themes/yspf5/theme/buy-link.tpl.phaml",
+		"/Users/aegir/Sites/Aegir/adminysp/sites/ysp.ld/themes/yspf5/theme/video.tpl.phaml",
+		"/Users/aegir/Sites/Aegir/adminysp/sites/ysp.ld/themes/yspf5/theme/page--front.tpl.phaml",
+		"/Users/aegir/Sites/Aegir/spark/sites/mf.dev/themes/mf/sass/_variables.scss",
+		"/Users/aegir/Sites/Aegir/spark/sites/mf.dev/themes/mf/bower_components/css-classes/scss/css-classes.scss",
+		"/Users/aegir/Sites/Aegir/spark/sites/mf.dev/themes/mf/sass/app.scss",
+		"/Users/aegir/Sites/Aegir/spark/sites/mf.dev/themes/mf/theme/node.tpl.phaml",
+		"/Users/aegir/Sites/Aegir/spark/sites/mf.dev/themes/mf/theme/page.tpl.phaml",
+		"/Users/bryce/Design/MeetingRoom/GoogleMap-style.json",
+		"/Users/aegir/Sites/Aegir/spark/sites/mf.dev/themes/mf/theme/html.tpl.phaml",
+		"/Users/aegir/Sites/Aegir/spark/sites/mf.dev/themes/mf/bower_components/font-awesome/scss/_variables.scss",
+		"/Users/aegir/Sites/Aegir/spark/sites/mf.dev/themes/mf/bower_components/font-awesome/scss/font-awesome.scss",
+		"/Users/aegir/Sites/Aegir/spark/sites/mf.dev/themes/mf/theme/php/node.tpl.php",
+		"/Users/aegir/Sites/Aegir/spark/sites/mf.dev/themes/mf/theme/php/html.tpl.php",
+		"/Users/bryce/Design/Matt Fagan/web content.txt",
+		"/Users/bryce/Desktop/bootstrap-navbar.phaml",
+		"/Users/aegir/Sites/Aegir/spark/sites/mf.dev/themes/mf/sass/_palette.scss",
+		"/Users/aegir/Sites/Aegir/spark/sites/mf.dev/themes/mf/bower_components/css-classes/scss/_settings.scss",
+		"/Users/aegir/Sites/Aegir/spark/sites/mf.dev/themes/mf/bower_components/css-classes/css/css-classes.css",
+		"/Users/aegir/Sites/Aegir/spark/sites/mf.dev/themes/mf/sass/app.sass",
+		"/Users/aegir/Sites/Aegir/spark/sites/mlatno.ld/themes/mlatno/theme/html.tpl.phaml",
+		"/Users/aegir/Sites/Aegir/spark/sites/mlatno.ld/themes/mlatno/less/style.less",
+		"/Users/aegir/Sites/Aegir/adminysp/sites/ysp.ld/themes/yspf5/bower_components/css-classes/scss/_functions.scss",
+		"/Users/aegir/Sites/Aegir/adminysp/sites/ysp.ld/themes/yspf5/bower_components/css-classes/scss/css-classes.scss",
+		"/Users/aegir/Sites/Aegir/adminysp/sites/ysp.ld/themes/yspf5/bower_components/css-classes/scss/_settings.scss",
+		"/Users/bryce/Library/Application Support/Sublime Text 3/Packages/User/SASSc.sublime-build",
+		"/Users/bryce/Desktop/Kickass webdev environment",
+		"/Users/aegir/Sites/Aegir/spark/sites/mf.dev/themes/mf/sass/_flat-colors.scss",
+		"/Users/aegir/Sites/Aegir/spark/sites/mf.dev/themes/mf/sass/style.sass",
+		"/Users/bryce/Library/Application Support/Sublime Text 3/Packages/User/LESS.sublime-settings",
+		"/Users/bryce/Library/Application Support/Sublime Text 3/Packages/User/SublimeOnSaveBuild.sublime-settings",
+		"/Users/bryce/Library/Application Support/Sublime Text 3/Packages/SublimeOnSaveBuild/SublimeOnSaveBuild.sublime-settings",
+		"/Users/bryce/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/Users/bryce/Library/Application Support/Sublime Text 3/Packages/LESS/LESS.sublime-settings",
+		"/Users/bryce/Library/Application Support/Sublime Text 3/Packages/Package Control/Package Control.sublime-settings"
+	],
+	"find":
+	{
+		"height": 23.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			"dropdown",
+			"php55",
+			"$",
+			"&",
+			"			\"quality\": 4, \n",
+			"			\"audio_sample_rate\": 48000, \n",
+			"			\"audio_bitrate\": 64, \n",
+			"			\"h264_profile\": \"main\", \n",
+			"			\"audio_sample_rate\": 44100, \n",
+			"			\"audio_bitrate\": 56,",
+			"creden",
+			"danielzisin.com",
+			"^-",
+			"pos",
+			"fa-var-youtube-play",
+			"\n.",
+			"hover",
+			",",
+			"\\t\\n",
+			"\\t\\t",
+			"LINE",
+			"\\n",
+			"\\n([^\\n\\t]+)\\t",
+			"LINE",
+			"\\n",
+			"\\n([^\\n\\t]+)\\t",
+			"TAB",
+			"^(.+)\\t",
+			"\\n([^\\t\\n]*)\\t",
+			"\\n([^\\t]*)\\n",
+			"\\n\\n",
+			"navbar",
+			"}",
+			"{",
+			": ",
+			" => ",
+			"\", ",
+			"\" =>",
+			"\":",
+			"{\"",
+			"16",
+			"calc"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": true,
+		"replace_history":
+		[
+			"php54",
+			"\\n",
+			"and",
+			"			\"quality\": 3, \n",
+			"			\"audio_sample_rate\": 44100, \n",
+			"			\"audio_bitrate\": 56, \n",
+			"			\"h264_profile\": \"high\", \n",
+			"			\"audio_sample_rate\": 48000, \n",
+			"			\"audio_bitrate\": 48,",
+			"farside.com.au",
+			"",
+			" ",
+			"\\tcontent\\n",
+			"\\t",
+			"\\n",
+			"</p><p>",
+			"LINE$1\\t",
+			"\\n",
+			"</p><p>",
+			"LINE",
+			"\\t",
+			"$1TAB",
+			"</p>$1<p>",
+			"</p><p>",
+			")",
+			"(",
+			"=",
+			"\" ",
+			" =>",
+			":",
+			"{",
+			"size"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 111.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"project": "ng.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

@@ -182,6 +182,7 @@
       showinfo: 0,
       modestbranding: 1,
       rel: 0,
+      version: 3,
       autoplay: (this.playOnReady) ? 1 : 0,
       loop: (this.player_.options()['loop']) ? 1 : 0,
       list: this.playlistId,
