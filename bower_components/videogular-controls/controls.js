@@ -557,4 +557,18 @@ angular.module("com.2fdevs.videogular.plugins.controls", [])
 				}
 			}
 		}
-	]);
+    	])
+    .directive(
+    "vgResolution",
+    [function(){
+        return {
+            restrict: "AE",
+            require: "^videogular",
+            scope: false,
+            template: "<div class='changeResolution' ng-class='changeResolutionClass'><ul><li ng-repeat='resolution in config.resolutions'><a ng-click='setResolution(resolution);'>{{resolution.text}}</a></li></ul></div>"
+//            link: function(scope, elem, attr, API) {
+//            }
+        };
+    }
+    ])
+;

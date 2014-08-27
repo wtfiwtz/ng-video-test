@@ -483,3 +483,42 @@ vg-ima-ads {
   position: absolute;
   z-index: 6;
   display: none; }
+
+
+/* Custom CSS for resolution changing */
+.changeResolution {
+    display: inline-block;
+    width: 50px;
+    color: white;
+    position: relative;
+}
+
+.changeResolution ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    vertical-align: bottom;
+}
+
+.changeResolution ul li {
+    font-size: 10px;
+    padding: 3px;
+    background-color: #888;
+    color: #fff;
+    text-align: center;
+    border: solid 1px white;
+    border-bottom: none;
+    cursor: pointer;
+    /* display:none; */
+}
+
+.changeResolution:hover ul li {
+    display: block;
+}
+
+.changeResolution ul li:hover {
+    background-color: #aaa;
+}

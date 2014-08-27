@@ -10,6 +10,12 @@ var app = angular.module('app', [
 
 // Root controller
 app.controller('root', function ($scope, $sce) {
+
+    $scope.setResolution = function(resolution) {
+        $scope.config.width = resolution.width;
+        $scope.config.height = resolution.height;
+    }
+
 	$scope.thumb = "img/test.jpg";
 	var query = encodeURIComponent(JSON.stringify({ html5:1 }));
 	$scope.sources = {
@@ -53,7 +59,12 @@ app.controller('root', function ($scope, $sce) {
 		},
 		sources: [
 			{src: $scope.ytUrl, type: "video/youtube"}
-		]
+		],
+        resolutions: [
+            {text: '320 x 180', width: 320, height: 180},
+            {text: '640 x 360', width: 640, height: 360},
+            {text: '640 x 480', width: 640, height: 480}
+        ]
 	};
 });
 
@@ -69,7 +80,7 @@ app.directive('vg', function($window){
 	    scope.$on('onVgUpdateTime', function(e) { 
 	    	console.debug('update');
 	    });
-	}	
+	}
   }
 });
 
