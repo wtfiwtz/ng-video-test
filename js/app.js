@@ -19,7 +19,7 @@ app.controller('root', function ($scope, $sce) {
 	$scope.thumb = "img/test.jpg";
 	var query = encodeURIComponent(JSON.stringify({ html5:1 }));
 	$scope.sources = {
-		youtube: "https://www.youtube.com/watch?v=dQw4w9WgXcQ&playerVars=" + query,
+		youtube: "https://www.youtube.com/watch?v=r8HPIH5JCak&vq=small",
 /*		mp4: {
 			SD: "http://download.blender.org/peach/bigbuckbunny_movies/big_buck_bunny_480p_stereo.avi", 
 			HD: "http://download.blender.org/peach/bigbuckbunny_movies/big_buck_bunny_720p_stereo.avi"
@@ -34,8 +34,8 @@ app.controller('root', function ($scope, $sce) {
 
 	// Videogular config
 	$scope.config = {
-		width: "320",
-		height: "180",
+		width: "1280",
+		height: "720",
 		autoHide: "true",
 		autoPlay: "true",
 		responsive: "false",
@@ -89,29 +89,23 @@ app.directive('videoJs', function($timeout, $window){
   return {
    restrict: 'A',
    link: function(scope,element,attrs) {
-   		var setup = { techOrder:["youtube"], forceHTML5:true };
+   		var setup = { techOrder:["youtube"], forceHTML5:true, autoplay:true, src:scope.sources.youtube };
    		attrs.id = "video" + "foo";
    		element.attr('id', attrs.id);
-//   		element.attr('poster', "/img/test.jpg");
-   		element.append('<source type="video/youtube" src="' + scope.sources.youtube + '" />');
-	        var player = $window.videojs(attrs.id, setup).ready(function() {
-	        	var source = ([
-	        		{ type:"video/youtube", src:scope.sources.youtube }
-	 	  		]);
-	    		this.src(source);
-	//    		this.load();
-	//       	this.stop();
-	//        	this.play();
-		    });
+   		element.attr('poster', "/img/test.jpg");
+        var player = $window.videojs(attrs.id, setup).ready(function() {
+	    });
+//       	player.trigger('firstplay');
+        // Fix issue with not getting activated classes
+        player.buildCSSClass();
+ //       player.removeClass('vjs-paused');
+ //       player.addClass('vjs-has-started');
+ //       player.addClass('vjs-playing');
+        player.dimensions(640,360);
 
 	    scope.$on('$destroy', function () {
 		    player.dispose();
 		});
-        // Fix issue with not getting activated classes
-        //var vidDiv = $('#' + id);
-        //vidDiv.removeClass('vjs-paused').addClass('vjs-has-started vjs-playing');
-        // Move overlay inside video element to be styled for pause/play
-        //$('#' + id + ' + .overlay').appendTo(vidDiv);
     }
   }
 });
