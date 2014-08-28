@@ -1,8 +1,9 @@
 <videogular vg vg-player-ready="onPlayerReady" vg-width="config.width" vg-height="config.height" vg-theme="config.theme.url" vg-responsive="config.responsive" vg-stretch="config.stretch" vg-autoplay="config.autoPlay">
-<video class="videoPlayer" preload="metadata">
-<source type="video/youtube" ng-src="{{ytUrl}}" />
+<video class="videoPlayer" id="videoPlayer1" preload="metadata" src="{{source}}">
+<!-- <source type="video/youtube" ng-src="{{ytUrl}}" /> -->
+    <!-- <source type="{{mimeType}}" ng-src="{{source}}" /> -->
 </video>
-<vg-youtube></vg-youtube>
+<!-- <vg-youtube></vg-youtube> -->
 <vg-buffering></vg-buffering>
 <vg-overlay-play></vg-overlay-play>
 <vg-poster-image vg-url="config.plugins.poster.url" vg-stretch="config.stretch.value"></vg-poster-image>
