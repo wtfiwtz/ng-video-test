@@ -222,7 +222,7 @@ angular.module("com.2fdevs.videogular.plugins.controls", [])
 						isSeeking = true;
 						if (isPlaying) isPlayingWhenSeeking = true;
 						seekTime(touchX * API.videoElement[0].duration / elem[0].scrollWidth);
-						API.pause();
+						//API.pause();
 					}
 					function onScrubBarTouchEnd(event) {
 						if (isPlayingWhenSeeking) {
@@ -250,7 +250,7 @@ angular.module("com.2fdevs.videogular.plugins.controls", [])
 						isSeeking = true;
 						if (isPlaying) isPlayingWhenSeeking = true;
 						seekTime(event.offsetX * API.videoElement[0].duration / elem[0].scrollWidth);
-						API.pause();
+						//API.pause();
 					}
 					function onScrubBarMouseUp(event) {
 						event = VG_UTILS.fixEventOffset(event);
