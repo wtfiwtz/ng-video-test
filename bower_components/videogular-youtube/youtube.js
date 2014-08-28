@@ -106,6 +106,11 @@ angular.module("info.vietnamcode.nampnq.videogular.plugins.youtube", [])
                             };
                             scope.ytplayer.setSize(API.getSize().width, API.getSize().height);
                             videogularElementScope.updateSize();
+
+                            scope.ytplayer.addEventListener('onPlaybackQualityChange', function(e) {
+                                console.log('playback quality change', e.data);
+                            });
+
                             function updateTime(){
                                 videogularElementScope.onUpdateTime({
                                         target: API.videoElement[0]
@@ -183,7 +188,36 @@ angular.module("info.vietnamcode.nampnq.videogular.plugins.youtube", [])
                                         scope.loadYoutube()
                                     });
                             }
-                        })
+                        });
+
+                        $rootScope.$on(VG_EVENTS.ON_UPDATE_SIZE, function() {
+                            var width = API.getSize().width;
+                            var height = API.getSize().height;
+                            //var iframe = elem.find('iframe');
+//                            scope.ytplayer.setSize(width,height);
+                            //iframe.css('width', width + 'px');
+                            //iframe.css('height', height + 'px');
+                            console.log('Dims: ' + width + 'x' + height);
+
+                            // Not working due to:
+                            //  https://code.google.com/p/gdata-issues/issues/detail?id=4777
+
+                            if (width > 1440 && height > 1080) {
+                                scope.ytplayer.setPlaybackQuality('highres');
+                            } else if (width > 960 && height > 720) {
+                                scope.ytplayer.setPlaybackQuality('hd1080');
+                            } else if (width > 640 && height > 480) {
+                                scope.ytplayer.setPlaybackQuality('hd720');
+                            } else if (width > 480 && height > 360) {
+                                scope.ytplayer.setPlaybackQuality('large');
+                            } else if (width > 320 && height > 240) {
+                                scope.ytplayer.setPlaybackQuality('medium');
+                            } else {
+                                scope.ytplayer.setPlaybackQuality('small');
+                            }
+                            console.log(scope.ytplayer.getPlaybackQuality());
+                            console.log(scope.ytplayer.getAvailableQualityLevels());
+                        });
                         scope.removeHtmlMediaElementListener = function (htmlMediaElement) {
                             htmlMediaElement.removeEventListener("waiting");
                             htmlMediaElement.removeEventListener("ended");
