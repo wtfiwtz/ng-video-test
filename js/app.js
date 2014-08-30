@@ -5,44 +5,68 @@ var app = angular.module('app', [
     'com.2fdevs.videogular.plugins.controls',
     'com.2fdevs.videogular.plugins.overlayplay',
     'com.2fdevs.videogular.plugins.buffering',
-    //'info.vietnamcode.nampnq.videogular.plugins.youtube',
+    'info.vietnamcode.nampnq.videogular.plugins.youtube',
 ]);
 
 // Root controller
 var currentTime = 0;
 app.controller('root', function ($scope, $sce) {
 
-    function updateVideo() {
+    function restartVideo() {
         var vp = document.getElementsByClassName("videoPlayer")[0];
         vp.play();
         vp.currentTime = $scope.currTime;
     }
 
+    // Toggle between YouTube and HTML5
+    $scope.isYoutube = true;
+
+    $scope.onPlayerReady = function (API) {
+        $scope.API = API;
+    }
+
     $scope.setResolution = function(resolution) {
         $scope.config.width = resolution.width;
         $scope.config.height = resolution.height;
-        var vp = document.getElementsByClassName("videoPlayer")[0];
-        $scope.currTime = vp.currentTime;
-        vp.src = $sce.trustAsResourceUrl($scope.sources.mp4[resolution.version]);
-        vp.load();
-        $(vp).on('loadedmetadata', updateVideo);
+
+        if ($scope.isYoutube) {
+            youtubeScope = angular.element('vg-youtube').isolateScope();
+            youtubeScope.updateSize();
+
+        } else {
+            var vp = document.getElementsByClassName("videoPlayer")[0];
+            $scope.currTime = vp.currentTime;
+            vp.src = $sce.trustAsResourceUrl($scope.sources.mp4[resolution.version]); //mp4[resolution.version]);
+            vp.load();
+            $(vp).on('loadedmetadata', restartVideo);
+        }
     }
 
 	$scope.thumb = "img/test.jpg";
 	var query = encodeURIComponent(JSON.stringify({ html5:1 }));
 	$scope.sources = {
-		/* youtube: "https://www.youtube.com/watch?v=r8HPIH5JCak&vq=small", */
+		youtube: {
+            'large': "https://www.youtube.com/watch?v=r8HPIH5JCak&vq=large",
+            'hd720': "https://www.youtube.com/watch?v=qEI1_oGPQr0&vq=hd720"
+        },
 		mp4: {
-			'SD': "http://pdl.vimeocdn.com/02149/576/272781449.mp4?token2=1409266696_bdd61e4756e1d9133e75d89e134d9d28&aksessionid=7431a9debd982f3d",
-			'HD': "http://pdl.vimeocdn.com/88089/513/269819799.mp4?token2=1409267819_7450647efd00ea5c461f0e7076579f22&aksessionid=11a5eb5e8a87749f"
+            'small': "http://pdl.vimeocdn.com/05009/152/256790876.mp4?token2=1409393190_9a6bc2bd3470277cb661df4270dd0bd8&aksessionid=e54e8adee31ddfc8",
+            'medium': "http://pdl.vimeocdn.com/05009/152/256790876.mp4?token2=1409393190_9a6bc2bd3470277cb661df4270dd0bd8&aksessionid=e54e8adee31ddfc8",
+			'large': "http://pdl.vimeocdn.com/05009/152/256790876.mp4?token2=1409393190_9a6bc2bd3470277cb661df4270dd0bd8&aksessionid=e54e8adee31ddfc8",
+			'hd720': "http://pdl.vimeocdn.com/92453/305/258716066.mp4?token2=1409393154_26e87b2c46a8172555be1d78b8f1b8aa&aksessionid=61a79ec4008de5e0",
+            'hd1440': "http://pdl.vimeocdn.com/92453/305/258716066.mp4?token2=1409393154_26e87b2c46a8172555be1d78b8f1b8aa&aksessionid=61a79ec4008de5e0",
+            'highres': "http://pdl.vimeocdn.com/92453/305/258716066.mp4?token2=1409393154_26e87b2c46a8172555be1d78b8f1b8aa&aksessionid=61a79ec4008de5e0"
 			},
-        // http://pdl.vimeocdn.com/02149/576/272781449.mp4?token2=1409266696_bdd61e4756e1d9133e75d89e134d9d28&aksessionid=7431a9debd982f3d
 		ogg: {
 			SD: "http://download.blender.org/peach/bigbuckbunny_movies/big_buck_bunny_480p_stereo.ogg",
 			HD: "http://download.blender.org/peach/bigbuckbunny_movies/big_buck_bunny_720p_stereo.ogg"
 			}
 	};
-	$scope.source = $sce.trustAsResourceUrl($scope.sources.mp4['SD']);
+    if ($scope.isYoutube) {
+        $scope.source = $sce.trustAsResourceUrl($scope.sources.youtube['large']); // mp4['SD']);
+    } else {
+        $scope.source = $sce.trustAsResourceUrl($scope.sources.mp4['large']);
+    }
     $scope.mimeType = 'video/mp4'
 
 	// Videogular config
@@ -71,32 +95,35 @@ app.controller('root', function ($scope, $sce) {
 			}
 		},
 		sources: [
-            {src: $scope.sources.mp4.SD, type: "video/mp4"}
-			//{src: $scope.ytUrl, type: "video/youtube"}
+            {src: $scope.sources.youtube, type: 'video/youtube'} // .mp4.SD, type: "video/mp4"}
 		],
         resolutions: [
-            {text: '320 x 180', width: 320, height: 180, version: 'SD'},
-            {text: '640 x 360', width: 640, height: 360, version: 'HD'},
-            {text: '640 x 480', width: 640, height: 480, version: 'HD'}
+            {text: '320 x 240', width: 320, height: 180, version: 'small'},
+            {text: '480 x 360', width: 640, height: 360, version: 'medium'},
+            {text: '640 x 480', width: 640, height: 480, version: 'large'},
+            {text: '960 x 720', width: 960, height: 720, version: 'hd720'},
+            {text: '1440 x 1080', width: 1440, height: 1080, version: 'hd1440'},
+            {text: '1920 x 1080', width: 1920, height: 1080, version: 'highres'}
         ]
 	};
 });
 
 // Videogular
-app.directive('vg', function($window){
-  return {
-   restrict: 'A',
-   link: function(scope,element,attrs) {
-	   	scope.API = null;
-		scope.onPlayerReady = function(API) {
-			scope.API = API;
-		};
-	    scope.$on('onVgUpdateTime', function(e) { 
-	    	console.debug('update');
-	    });
-	}
-  }
-});
+//app.directive('vg', function($window){
+//  return {
+//   restrict: 'A',
+//   link: function(scope,element,attrs) {
+//	   	scope.API = null;
+//		scope.onPlayerReady = function(API) {
+//			scope.API = API;
+//            console.log(scope);
+//		};
+//	    scope.$on('onVgUpdateTime', function(e) {
+//	    	console.debug('update');
+//	    });
+//	}
+//  }
+//});
 
 // Video.js
 app.directive('videoJs', function($timeout, $window){

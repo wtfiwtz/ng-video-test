@@ -190,34 +190,30 @@ angular.module("info.vietnamcode.nampnq.videogular.plugins.youtube", [])
                             }
                         });
 
-                        $rootScope.$on(VG_EVENTS.ON_UPDATE_SIZE, function() {
+                        scope.updateSize = function() {
                             var width = API.getSize().width;
                             var height = API.getSize().height;
-                            //var iframe = elem.find('iframe');
-//                            scope.ytplayer.setSize(width,height);
-                            //iframe.css('width', width + 'px');
-                            //iframe.css('height', height + 'px');
                             console.log('Dims: ' + width + 'x' + height);
+                            var currentTime = scope.ytplayer.getCurrentTime();
+                            console.log('Current time: ' + currentTime);
 
-                            // Not working due to:
-                            //  https://code.google.com/p/gdata-issues/issues/detail?id=4777
+                            if (width)
 
                             if (width > 1440 && height > 1080) {
-                                scope.ytplayer.setPlaybackQuality('highres');
+                                scope.ytplayer.loadVideoById(scope.videoId, currentTime, 'highres');
                             } else if (width > 960 && height > 720) {
-                                scope.ytplayer.setPlaybackQuality('hd1080');
+                                scope.ytplayer.loadVideoById(scope.videoId, currentTime, 'hd1080');
                             } else if (width > 640 && height > 480) {
-                                scope.ytplayer.setPlaybackQuality('hd720');
+                                scope.ytplayer.loadVideoById(scope.videoId, currentTime, 'hd720');
                             } else if (width > 480 && height > 360) {
-                                scope.ytplayer.setPlaybackQuality('large');
+                                scope.ytplayer.loadVideoById(scope.videoId, currentTime, 'large');
                             } else if (width > 320 && height > 240) {
-                                scope.ytplayer.setPlaybackQuality('medium');
+                                scope.ytplayer.loadVideoById(scope.videoId, currentTime, 'medium');
                             } else {
-                                scope.ytplayer.setPlaybackQuality('small');
+                                scope.ytplayer.loadVideoById(scope.videoId, currentTime, 'small');
                             }
-                            console.log(scope.ytplayer.getPlaybackQuality());
-                            console.log(scope.ytplayer.getAvailableQualityLevels());
-                        });
+                        };
+
                         scope.removeHtmlMediaElementListener = function (htmlMediaElement) {
                             htmlMediaElement.removeEventListener("waiting");
                             htmlMediaElement.removeEventListener("ended");
